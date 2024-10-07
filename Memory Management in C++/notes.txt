@@ -35,4 +35,34 @@ Dynamic memory is allocated on the heap using operators like new and new[] and m
 
 CODE :
 
+#include<iostream>
+
+void heapEx(){
+    // Single object allocation
+    int* ptr = new int;   // allocate memory for an integer
+    *ptr = 25;
+    std :: cout << "Value pointed by ptr: " << *ptr << std :: endl;
+    delete ptr;  // deallocate memory
+
+    // Array allocation
+    int* arr = new int[2];  // Allocate memory for an array of 5 integers
+    for(int i=0; i<5; i++){
+        arr[i] = i*10;
+        std :: cout << "arr[" << i << "] = " << arr[i] << std :: endl;
+    }
+    delete[] arr;  // Deallocate array memory
+}
+
+int main(){
+    heapEx();
+    return 0;
+}
+
+O/P =
+Value pointed by ptr: 25
+arr[0] = 0
+arr[1] = 10
+arr[2] = 20
+arr[3] = 30
+arr[4] = 40
 
