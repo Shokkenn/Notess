@@ -1,0 +1,2 @@
+Memory management is a critical aspect of C++ programming, allowing you to control how is allocating
+

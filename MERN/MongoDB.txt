@@ -1,0 +1,107 @@
+MongoDB is a NoSQL database, which means it does not use the traditional table-based relational database structure. Instead, it uses a flexible, document-oriented data model that stores data in BSON (Binary JSON) format. Unlike SQL databases that use rows and columns, MongoDB stores data as JSON-like documents, making it easier to handle unstructured data and providing greater flexibility in terms of schema design.
+
+MongoDB is a document-oriented NoSQL database management system.
+It uses JSON-like document with optional schemas.
+MongoDB works on the concept of Collection and document.
+MongoDB has inbuilt support for data partitioning(Sharding). *Sharding : It is process of splitting data up across machines.
+
+Mongo Shell : It is javascript shell that allows intercation with MongoDB instance from the command line. With that one can perform administrative functions, inspecting an instance, or exploring MongoDB.
+
+TTL (Time To Live) Indexes in MongoDB are special indexes that automatically remove documents from a collection after a certain period. They are commonly used for data that needs to expire after a specific time, such as session information, logs, or temporary data. To create a TTL index, you can specify the expiration time in seconds:
+
+db.sessions.createIndex({ "createdAt": 1 }, { expireAfterSeconds: 3600 })
+
+
+
+
+We don't have to install MongoDB. MongoDB Atlas is Cloud version of DBMS.
+MongoDB Compass is GUI application for managing data in database.
+
+Create cluster -> Set up security -> Go to connect -> Get MongoDB URL -> for connecting with our created cluster.
+
+Mongoose Object Mondeling Library is used for Mondeling database in Node.js.
+
+
+Connect to Database - 
+
+    const connectDB = async () =>
+    {
+        try
+        {
+            const conn = await mongoose.connect(process.env.MONGO_URI, { 
+                                                                            useUnifiedTopology: true ,
+                                                                            useNewUrlParser: true ,
+                                                                            useCreateIndex: true,
+                                                                        })
+
+            console.log('MongoDB is connected.')
+        }
+        catch(error)
+        {
+            console.log(error)
+
+            process.exit(1)
+        }
+    }
+
+
+Model - 
+
+    const userSchema = mongoose.Schema(
+    {
+        name: { type: String, required: true, default: false },
+
+        email: { type: String, required: true, unique: true },
+        
+        password: { type: String, required: true, select: false },
+
+        product: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'product' }
+    },
+    {
+        timestamp: true,
+    })
+
+    userSchema.methods.matchPassword = async function(enteredPassword) ..... add methods
+    {
+        return await bcrypt.compare(enteredPassword , this.password)
+    }
+
+    const User = mongoose.model('User' , userSchema)  ..... mongoose.model compiles a Schema into a Model.
+                                                            Now we can perform CRUD operations on model.
+
+    module.exports = User
+
+
+Queries - 
+
+    const user = await User.findOne({ email: Email }) ... Returns the whole document.
+
+    const user = await User.findById(req.user._id)
+
+    const users = await User.find({})  ... all documents
+
+    const results = await UserModel.find({ name: { $regex: searchText, $options: 'i' } })  .... find by keywords.
+
+    const profile = await ProfileModel.findOne({ user: user._id }).populate('user') .... polulates profile with other user fields.
+
+
+
+    const user = await User.create({ name, email, password }) ... Create new doc in database.
+
+
+
+    user.name = req.body.name || user.name  .... put update .. whole user is sent
+    
+    const updatedUser = await user.save()
+
+
+    const updatedUser = await user.findByIdAndUpdate(_id, req.body, { new: true }) .... patch update
+    
+    .... We will have to add 'useFindAndModify: false' in connectDB function ...... req.body { email: "adfa@gmail.com" }
+
+
+
+    await user.remove()  ... Delete document
+
+
+

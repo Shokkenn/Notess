@@ -1,0 +1,15 @@
+Node.js :-
+
+       Node.js is a single threadrd non-blocking runtime environment for executing javascript code outside of the browser.
+       
+       Chrome uses V8 engine runtime.
+
+       Node.js is built on V8 engine.
+
+       Easy, Fast and scalable network application.
+
+       But not good for CPU intensive application.
+
+
+       npm init : creates package.json (asks projects details etc.)
+       
