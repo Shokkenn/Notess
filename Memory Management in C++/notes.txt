@@ -66,3 +66,11 @@ arr[2] = 20
 arr[3] = 30
 arr[4] = 40
 
+Explanation:
+
+
+~ new int allocates memory for a single integer on the heap.
+~ new int[5] allocates memory for an array of 5 integers on the heap.
+~ delete ptr deallocates the memory allocated for the single integer.
+~ delete[] arr deallocates the memory allocated for the array.
+~ Important: Always pair new with delete and new[] with delete[] to avoid undefined behavior.
