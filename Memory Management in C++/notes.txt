@@ -1,2 +1,38 @@
-Memory management is a critical aspect of C++ programming, allowing you to control how is allocating
+Memory management is a critical aspect of C++ programming, allowing you to control how memory is allocated, used, and deallocated in your applications. Proper memory management ensures efficient use of resources, prevents memory leaks, and avoids undefined behaviors like dangling pointers or double deletions.
+
+In C++, memory management can be broadly categorized into:
+
+   1. Automatic (Stack) Memory Management
+   2. Dynamic (Heap) Memory Management
+   3. Resource Acquisition Is Initialization (RAII)
+   4. Smart pointers
+ 
+Lets delve into each of these concepts with C++ code:
+
+1. Automatic (Stack) Memory Management :
+
+Variables declared inside a function are typically allocated on the stack. The memory is automatically managed; it’s allocated when the variable is declared and deallocated when the variable goes out of scope.
+
+CODE :
+#include<iostream>
+
+void stackEx(){
+    int a = 10;              // Allocated on the stack
+    double b = 2.5;          // Allocated on the stack
+    std :: cout << "a: " << a << ", b: " << std :: endl;
+// a and b are automatically deallocated here
+}
+
+int main(){
+    stackEx();
+    return 0;
+}
+
+
+2. Dynamic (Heap) Memory Management :
+
+Dynamic memory is allocated on the heap using operators like new and new[] and must be manually deallocated using delete and delete[]. Failure to deallocate memory leads to memory leaks.
+
+CODE :
+
 

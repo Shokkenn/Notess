@@ -1,6 +1,6 @@
 Node.js :-
 
-       Node.js is a single threadrd non-blocking runtime environment for executing javascript code outside of the browser.
+       Node.js is a single threadrd non-blocking((asynchronous) I/O) runtime environment for executing javascript code outside of the browser.
        
        Chrome uses V8 engine runtime.
 
@@ -11,5 +11,47 @@ Node.js :-
        But not good for CPU intensive application.
 
 
+       module : It considers as block of code that provide a simple or complex functionality that can communicate with external application. They are useful because of their reusability and ability to reduce the complexity of code into smaller pieces. Some examples of modules are https, fs, os, path etc.
+
+       
+
+
        npm init : creates package.json (asks projects details etc.)
        
+
+       package.json we add scripts ... dev: node index.js .. npm run dev will run index.js
+
+    npm - Node Package Manager is world's biggest software registry. Its advantages include dependency management, version control, centralized repository, and seamless integration with Node.js projects.
+    
+    REPL in Node.js stands for Read, Evaluate, Print, and Loop. It is a computer environment similar to the shell which is useful for writing and debugging code as it executes the code in on go.
+
+    package.json in Node.js is a metadata file that contains project-specific information such as dependencies, scripts, version, author details, and other configuration settings required for managing and building the project.
+    
+    we can install public software packages of modules for our project with out loggin in or registration.
+
+    Modules - block of encapsulated code .. we can use in our application.
+
+    porcess in a global object in Node... we can use it in multiple places like ..
+    process.env for environment variables, process.exit() for ending execution of process.
+
+    Middleware is the function that works between the request and the response cycle. Middleware gets executed after the server receives the request and before the controller sends the response.
+
+
+Git & GitHub
+
+    Git - Git is a revision Control system, a tool, installed and maintained in our local machine,to manage our source code history.
+
+    GitHub - GitHub is a cloud-based hosting service for Git Repositories.
+
+    First Push -
+        git init
+        git add .
+        git commit -m "first commit"
+        git branch -M main
+        git remote add origin https://github.com/artiam99/Blank.git - Remote repository in github for project, people can see your code here
+        git push -u origin main
+    
+    Push in existing repository - 
+        git remote add origin https://github.com/artiam99/Blank.git
+        git branch -M main
+        git push -u origin main
